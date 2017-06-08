@@ -9,24 +9,35 @@ fishes = []
 for i in range(4):
     fishes.append([Image(Point(0, 0), _images[i]), Image(Point(0, 0), _rimages[i])])
 
-win = GraphWin("Fish Tank", 800, 600)
+underwater = Image(Point(400, 250), 'underwater.gif')
+boat = Image(Point(100, 140), 'boat.gif')
 
-fishes[0][1].move(72, 240)
+win = GraphWin("Fish Tank", 800, 500)
+
+underwater.draw(win)
+boat.draw(win)
+
+fishes[0][1].move(72, 214)
 fishes[0][1].draw(win)
-fishes[1][0].move(799-72, 320)
+fishes[1][0].move(799-72, 286)
 fishes[1][0].draw(win)
-fishes[2][1].move(72, 400)
+fishes[2][1].move(72, 358)
 fishes[2][1].draw(win)
-fishes[3][0].move(799-72, 480)
+fishes[3][0].move(799-72, 430)
 fishes[3][0].draw(win)
 
 while True:
-    if win.checkKey():
+    k = win.checkKey()
+    if k == 'Right':
+        boat.move(7, 0)
+    elif k == 'Left':
+        boat.move(-7, 0)
+    elif k == 'Q' or k == 'q':
         break
-    fishes[0][1].move(16, 0)
-    fishes[1][0].move(-8, 0)
-    fishes[2][1].move(4, 0)
+    fishes[0][1].move(5, 0)
+    fishes[1][0].move(-4, 0)
+    fishes[2][1].move(3, 0)
     fishes[3][0].move(-2, 0)
-    time.sleep(0.1)
+    time.sleep(0.01)
 
 win.close()
