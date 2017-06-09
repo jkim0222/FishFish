@@ -513,7 +513,7 @@ class GraphicsObject:
         if canvas and not canvas.isClosed():
             trans = canvas.trans
             if trans:
-                x = dx/ trans.xscale 
+                x = dx / trans.xscale
                 y = -dy / trans.yscale
             else:
                 x = dx
@@ -586,8 +586,8 @@ class _BBox(GraphicsObject):
         self.p1.x = self.p1.x + dx
         self.p1.y = self.p1.y + dy
         self.p2.x = self.p2.x + dx
-        self.p2.y = self.p2.y  + dy
-                
+        self.p2.y = self.p2.y + dy
+
     def getP1(self): return self.p1.clone()
 
     def getP2(self): return self.p2.clone()
@@ -639,7 +639,8 @@ class Oval(_BBox):
         x1,y1 = canvas.toScreen(p1.x,p1.y)
         x2,y2 = canvas.toScreen(p2.x,p2.y)
         return canvas.create_oval(x1,y1,x2,y2,options)
-    
+
+
 class Circle(Oval):
     
     def __init__(self, center, radius):
@@ -686,7 +687,6 @@ class Line(_BBox):
         if not option in ["first","last","both","none"]:
             raise GraphicsError(BAD_OPTION)
         self._reconfig("arrow", option)
-        
 
 class Polygon(GraphicsObject):
     
